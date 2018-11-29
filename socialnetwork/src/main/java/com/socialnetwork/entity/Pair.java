@@ -1,6 +1,4 @@
-package com.socialnetwork;
-
-import com.socialnetwork.entity.User;
+package com.socialnetwork.entity;
 
 public class Pair {
 	private User first;

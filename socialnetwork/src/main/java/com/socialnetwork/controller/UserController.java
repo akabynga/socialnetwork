@@ -56,4 +56,15 @@ public class UserController {
 		userService.remove(id);
 	}
 
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "/generate/{quantity}")
+	public @ResponseBody void generateUsers(@PathVariable("quantity") Long quantity) {
+		userService.generateUsers(quantity);
+	}
+
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "/generate/{quantity}")
+	public @ResponseBody void getPairIntersectionByInterests(@PathVariable("quantity") Long quantity) {
+		userService.getPairIntersectionByInterests();
+	}
 }

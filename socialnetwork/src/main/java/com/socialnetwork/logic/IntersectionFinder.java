@@ -1,4 +1,4 @@
-package com.socialnetwork;
+package com.socialnetwork.logic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.socialnetwork.entity.Interest;
+import com.socialnetwork.entity.Pair;
 import com.socialnetwork.entity.User;
 
 public class IntersectionFinder {

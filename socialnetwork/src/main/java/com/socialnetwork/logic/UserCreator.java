@@ -1,4 +1,4 @@
-package com.socialnetwork;
+package com.socialnetwork.logic;
 
 import java.util.ArrayList;
 import java.util.HashSet;

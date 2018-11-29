@@ -16,9 +16,15 @@ public abstract class BaseEntityRepository<I, E extends SocialNetworkEntity<I>> 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public List<E> findAll(int amount, int skip) {
+	public List<E> findAll(Integer amount, Integer skip) {
 		CriteriaQuery<E> criteria = createCriteriaBuilder();
-		TypedQuery<E> q = getEntityManager().createQuery(criteria).setFirstResult(skip).setMaxResults(amount);
+		TypedQuery<E> q = getEntityManager().createQuery(criteria);
+		if (skip != null) {
+			q.setFirstResult(skip);
+		}
+		if (amount != null) {
+			q.setMaxResults(amount);
+		}
 		return q.getResultList();
 	}
 

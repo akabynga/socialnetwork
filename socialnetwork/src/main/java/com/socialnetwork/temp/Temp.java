@@ -9,8 +9,8 @@ import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.socialnetwork.UserCreator;
 import com.socialnetwork.entity.User;
+import com.socialnetwork.logic.UserCreator;
 
 public class Temp {
 

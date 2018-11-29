@@ -1,4 +1,4 @@
-package com.socialnetwork;
+package com.socialnetwork.temp;
 
 import java.util.Map;
 import java.util.Set;
@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.socialnetwork.entity.Interest;
+import com.socialnetwork.entity.Pair;
+import com.socialnetwork.logic.IntersectionFinder;
+import com.socialnetwork.logic.UserCreator;
 
 @SpringBootApplication
 public class SocialnetworkApplication {

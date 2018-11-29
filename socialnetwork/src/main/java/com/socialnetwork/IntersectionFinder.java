@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.socialnetwork.entity.Interest;
+import com.socialnetwork.entity.User;
+
 public class IntersectionFinder {
 
 	private List<User> users;
@@ -16,12 +19,12 @@ public class IntersectionFinder {
 		this.users = users;
 	}
 
-	public Map<Pair, Set<String>> findInterestIntersectionPairs() {
+	public Map<Pair, Set<Interest>> findInterestIntersectionPairs() {
 		List<User> used = new ArrayList<>();
 		List<Pair> pairs = new ArrayList<>();
 
-		Map<Pair, Set<String>> pairWeight = new HashMap<>();
-		Map<Pair, Set<String>> result = new HashMap<>();
+		Map<Pair, Set<Interest>> pairWeight = new HashMap<>();
+		Map<Pair, Set<Interest>> result = new HashMap<>();
 		for (int i = 0; i < users.size(); i++) {
 			for (int j = i + 1; j < users.size(); j++) {
 				pairs.add(new Pair(users.get(i), users.get(j)));
@@ -31,7 +34,7 @@ public class IntersectionFinder {
 
 		for (int i = 0; i < pairs.size(); i++) {
 			Pair p = pairs.get(i);
-			Set<String> intersections = getIntersections(p.getFirst().getInterests(), p.getSecond().getInterests());
+			Set<Interest> intersections = getIntersections(p.getFirst().getInterests(), p.getSecond().getInterests());
 			if (intersections.size() > 0) {
 				pairWeight.put(p, intersections);
 			}
@@ -47,7 +50,7 @@ public class IntersectionFinder {
 				if (used.contains(p.getFirst()) || used.contains(p.getSecond())) {
 					continue;
 				}
-				Set<String> intersection = pairWeight.get(p);
+				Set<Interest> intersection = pairWeight.get(p);
 				if (max < intersection.size()) {
 					max = intersection.size();
 					maxIntersectionPair = p;
@@ -64,11 +67,11 @@ public class IntersectionFinder {
 		return result;
 	}
 
-	private static Set<String> getIntersections(List<String> i1, List<String> i2) {
-		Set<String> checked = new HashSet<>();
+	private static Set<Interest> getIntersections(List<Interest> i1, List<Interest> i2) {
+		Set<Interest> checked = new HashSet<>();
 
-		List<String> checkedList = null;
-		List<String> varList = null;
+		List<Interest> checkedList = null;
+		List<Interest> varList = null;
 		if (i1.size() > i2.size()) {
 			checkedList = i1;
 			varList = i2;

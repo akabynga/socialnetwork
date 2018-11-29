@@ -6,11 +6,22 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import com.socialnetwork.entity.Interest;
+import com.socialnetwork.entity.User;
+
 public class UserCreator {
 
 	private Random random = new Random();
-	private String[] interest = { "movies", "cars", "hiking", "music", "dancing" };
+	private List<Interest> interest = new ArrayList<>();
 	private int quantity = 10;
+
+	{
+		interest.add(new Interest("movies"));
+		interest.add(new Interest("cars"));
+		interest.add(new Interest("music"));
+		interest.add(new Interest("hiking"));
+		interest.add(new Interest("dancing"));
+	}
 
 	public UserCreator(int quantity) {
 		super();
@@ -27,7 +38,7 @@ public class UserCreator {
 			Set<Integer> nums = new HashSet<Integer>();
 			for (int j = 0; j < intNum; j++) {
 				int num = generateRandomInteger(0, 4, nums);
-				people.getInterests().add(interest[num]);
+				people.getInterests().add(interest.get(num));
 				nums.add(num);
 			}
 			people.setName(capitailizeWord(name));

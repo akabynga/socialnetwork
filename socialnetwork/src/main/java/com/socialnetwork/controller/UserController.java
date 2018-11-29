@@ -63,8 +63,8 @@ public class UserController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/generate/{quantity}")
-	public @ResponseBody void getPairIntersectionByInterests(@PathVariable("quantity") Long quantity) {
+	@GetMapping(value = "/intersections")
+	public @ResponseBody void getPairIntersectionByInterests() {
 		userService.getPairIntersectionByInterests();
 	}
 }

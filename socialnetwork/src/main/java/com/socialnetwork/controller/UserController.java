@@ -1,6 +1,8 @@
 package com.socialnetwork.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -12,15 +14,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.socialnetwork.entity.Interest;
+import com.socialnetwork.entity.Pair;
 import com.socialnetwork.entity.User;
 import com.socialnetwork.service.UserService;
 
-@RestController(value = "/users")
+@RestController
+@RequestMapping("/users")
 public class UserController {
 
 	@Autowired
@@ -57,14 +63,14 @@ public class UserController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/generate/{quantity}")
-	public @ResponseBody void generateUsers(@PathVariable("quantity") Long quantity) {
+	@GetMapping(value = "/generate")
+	public @ResponseBody void generateUsers(@RequestParam Long quantity) {
 		userService.generateUsers(quantity);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/intersections")
-	public @ResponseBody void getPairIntersectionByInterests() {
-		userService.getPairIntersectionByInterests();
+	public @ResponseBody Map<Pair, Set<Interest>> getPairIntersectionByInterests() {
+		return userService.getPairIntersectionByInterests();
 	}
 }

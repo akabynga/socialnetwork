@@ -7,6 +7,8 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.socialnetwork.dao.BaseEntityRepository;
@@ -34,6 +36,7 @@ public class UserService extends DefaultService<Long, User> {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public Long create(User entity) {
 		List<Interest> interests = new ArrayList<Interest>();
 
@@ -49,6 +52,7 @@ public class UserService extends DefaultService<Long, User> {
 		return super.create(entity);
 	}
 
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public void generateUsers(Long quantity) {
 		UserCreator userCreator = new UserCreator(10);
 		for (User user : userCreator.getUsers()) {
@@ -56,6 +60,7 @@ public class UserService extends DefaultService<Long, User> {
 		}
 	}
 
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	public Map<Pair, Set<Interest>> getPairIntersectionByInterests() {
 		List<User> users = userRepository.findAll(null, null);
 		IntersectionFinder finder = new IntersectionFinder(users);

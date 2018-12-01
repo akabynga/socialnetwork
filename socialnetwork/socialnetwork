@@ -1,0 +1,28 @@
+1. First of all I added algorithm to find some intersections.
+2. Tried to add mongoDB and use some aggregation functions to achieve same result - no luck.
+3. Added simple architecture for rest service with spring boot. Divided to common layers: dao/service/controller.
+4. Move intersection calculation to service layer.
+5. Bug fixing.
+
+Result format:
+
+Pair [
+		first=User 
+		[id=2, name=Riuzda, interests=[
+			Interest [id=4, name=dancing], 
+			Interest [id=1, name=music]
+		]
+	], 
+		second=User 
+		[id=10, name=Eatcvf, interests=[
+			Interest [id=5, name=hiking], 
+			Interest [id=4, name=dancing]
+		]
+	]
+]: 
+Common: [
+	        {
+	            "id": 4,
+	            "name": "dancing"
+	        }
+]

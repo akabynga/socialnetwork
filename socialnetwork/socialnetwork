@@ -2,7 +2,10 @@
 2. Tried to add mongoDB and use some aggregation functions to achieve same result - no luck.
 3. Added simple architecture for rest service with spring boot. Divided to common layers: dao/service/controller.
 4. Move intersection calculation to service layer.
-5. Bug fixing.
+5. Added isolation levels for transaction. READ_COMMITTED - because we want to avoid inconsistencies in app. 
+6. Bug fixing.
+
+Hope I correctly understand this task. :)
 
 Result format:
 
